@@ -16,10 +16,9 @@ attr_reader :id
 
   def self.create(first_name, last_name, options ={})
     #1. Create new contact
-    #2. ASsign the new contact a unique id
+    #2. Assign the new contact a unique id
     new_contact = self.new(@@id, first_name, last_name, options) # => Contact.new...
-
-    #3. Add the enw contact to the list
+    #3. Add the new contact to the list
     @@contacts << new_contact
     #4. Increment the id
     @@id += 1
@@ -29,10 +28,21 @@ attr_reader :id
   end
 
   def self.all
+    #Why does this .each method return a list and the whole array?
+    #@@contacts.each {|x| p x}
+    # 1. Returns all contacts in the list
     @@contacts
   end
-  
+
   def self.find(id)
+    #Searches through @@contacts
+    #contact.id accesses the instance variable @id within a Contact object
+    #If any @id instance variables match the id passed in my the user
+    #The method returns the whole array.
+    #When the block returns true the find method will return the contact for which it was true
+    #Otherwise it will return nil
+    # 1. Access specific instance via id
+    # 2. Allow user to run instance methods on that instance
     @@contacts.find { |contact| contact.id == id}
   end
 

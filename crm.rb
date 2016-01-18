@@ -62,6 +62,12 @@ class CRM
   end
 
   def display_all_contacts
+    #Calls the all method on the Contact class
+    #The Contact class is available because we put require_relative 'contact.rb'
+    #At the top of this file
+    #This returns an array of objects
+    #We then iterate over the array
+    #Printing out all entries.
     Contact.all.each do |contact|
       puts "#{contact.id} #{contact.full_name} #{contact.email} #{contact.note}"
   end
